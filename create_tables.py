@@ -22,11 +22,12 @@ if __name__ == '__main__':
                 FOREIGN KEY(match_id) REFERENCES MATCH(match_id), \
                 FOREIGN KEY(player_id) REFERENCES PLAYER(player_id)) ;")
 
-    cur.execute("CREATE TABLE BALL_BY_BALL (match_id INT UNIQUE, innings_no INT UNIQUE, over_id INT UNIQUE, ball_id INT, \
+    cur.execute("CREATE TABLE BALL_BY_BALL (match_id INT, innings_no INT, over_id INT, ball_id INT, \
                 striker_batting_position INT, runs_scored INT, \
                 extra_runs INT, out_type TEXT, striker INT, non_striker INT, bowler INT, \
-                PRIMARY KEY (ball_id), \
+                PRIMARY KEY (ball_id, match_id, innings_no, over_id), \
                 FOREIGN KEY (striker) REFERENCES PLAYER(player_id), \
+                FOREIGN KEY (match_id) REFERENCES MATCH(match_id),\
                 FOREIGN KEY (non_striker) REFERENCES PLAYER(player_id), \
                 FOREIGN KEY (bowler) REFERENCES PLAYER(player_id) \
                  );")
