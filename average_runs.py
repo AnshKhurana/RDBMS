@@ -1,13 +1,15 @@
+
 import sqlite3
 
 if __name__ == '__main__':
     ipl = sqlite3.connect('ipl.db')
-    c = ipl.cursor()
-
-    c.execute("SELECT venue_name, SUM(runs_scored), COUNT(venue_name) FROM MATCH, BALL_BY_BALL \
-              WHERE MATCH.match_id = BALL_BY_BALL.match_id \
-                GROUP BY venue_name ORDER BY 2 DESC ;")
-    for row in c:
-        print(row)
+    cur = ipl.cursor()
+    cur.execute("SELECT venue_name, AVG( (SELECT SUM(runs_scored) FROM BALL_BY_BALL "
+                "WHERE BALL_BY_BALL.match_id = MATCH.match_id)) as a "
+                "FROM MATCH WHERE venue_name != 'NULL' "
+                "GROUP BY venue_name "
+                "ORDER BY a desc"
+                )
     ipl.commit()
-    ipl.close()
+    for row in cur:
+        print(row[0]+","+str(row[1]))
