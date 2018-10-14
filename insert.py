@@ -8,7 +8,7 @@ if __name__ == '__main__':
         dicts = ({'team_id': line[0], 'team_name': line[1]} for line in dr[1:])
         to_db = ((i['team_id'], i['team_name']) for i in dicts)
         for a in to_db:
-            print(a)
+            pass
         cur.executemany("INSERT INTO TEAM (team_id, team_name)  VALUES (?, ?);", to_db)
     ipl.commit()
     # player_id,player_name,dob,batting_hand,bowling_skill,country_name
@@ -19,7 +19,7 @@ if __name__ == '__main__':
         to_db = ((i['player_id'], i['player_name'], i['dob'], i['batting_hand'], i['bowling_skill'], i['country_name'])
                  for i in dicts)
         for a in to_db:
-            print(to_db)
+            pass
         cur.executemany("INSERT INTO PLAYER (player_id, player_name, dob, batting_hand, bowling_skill, country_name)\
          VALUES (?, ?, ?, ?, ?, ?);", to_db)
     ipl.commit()
@@ -33,7 +33,7 @@ if __name__ == '__main__':
                   i['role_desc'], i['team_id']) \
                  for i in dicts)
         for a in to_db:
-            print(to_db)
+            pass
         cur.executemany("INSERT INTO PLAYER_MATCH ( playermatch_key,match_id,player_id,batting_hand,bowling_skill,role_desc,team_id)\
          VALUES (?, ?, ?, ?, ?, ?, ?);", to_db)
     ipl.commit()
@@ -48,7 +48,7 @@ if __name__ == '__main__':
                   i['runs_scored'], i['extra_runs'], i['out_type'], i['striker'], i['non_striker'], i['bowler']) for i
                  in dicts)
         for a in to_db:
-            print(a)
+            pass
         cur.executemany("INSERT INTO BALL_BY_BALL (match_id,innings_no,over_id,ball_id,striker_batting_position, \
                         runs_scored,extra_runs,out_type,striker,non_striker,bowler)\
          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", to_db)
@@ -67,7 +67,7 @@ if __name__ == '__main__':
                   i['win_type'], i['man_of_match'], i['win_margin']
                   ) for i in dicts)
         for a in to_db:
-            print(a)
+            pass
         cur.executemany("INSERT INTO MATCH (match_id,season_year,team1,team2,battedfirst,battedsecond,venue_name,city_name,\
             country_name,toss_winner,match_winner,toss_name,win_type,man_of_match,win_margin)\
          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", to_db)
