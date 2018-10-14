@@ -72,3 +72,4 @@ if __name__ == '__main__':
             country_name,toss_winner,match_winner,toss_name,win_type,man_of_match,win_margin)\
          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", to_db)
     ipl.commit()
+    ipl.close()
