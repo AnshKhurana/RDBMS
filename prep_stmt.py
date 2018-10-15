@@ -37,7 +37,5 @@ if __name__ == '__main__':
                                 runs_scored,extra_runs,out_type,striker,non_striker,bowler)\
                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", params)
 
-    cur.execute("SELECT * FROM TEAM")
-    print(cur.fetchall())
     ipl.commit()
     ipl.close()
