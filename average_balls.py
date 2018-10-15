@@ -11,5 +11,13 @@ if __name__ == '__main__':
                 ORDER BY CAST( ans as REAL) DESC ;")
 
     ipl.commit()
+    i = 1
     for row in cur:
-        print(str(row[0]) + "," + row[1] + "," + str(row[2])) 
+        if i <= 10:
+           print(str(row[0]) + "," + row[1] + "," + str(row[2]))
+           i = i + 1
+           s = row[2] 
+        elif row[2] == s:
+            print(str(row[0]) + "," + row[1] + "," + str(row[2])) 
+        else:
+            break            
