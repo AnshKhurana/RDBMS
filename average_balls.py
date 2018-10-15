@@ -11,7 +11,7 @@ if __name__ == '__main__':
                 GROUP BY player_id \
                 ORDER BY CAST(ans as REAL) DESC) \
                 SELECT *, \
-                (SELECT ans FROM cte c1 WHERE (9)=(SELECT COUNT(ans) FROM cte c2 WHERE c2.ans > c1.ans)) allow \
+                (SELECT AVG(ans) FROM cte c1 WHERE (9)=(SELECT COUNT(ans) FROM cte c2 WHERE c2.ans > c1.ans)) allow \
                 FROM cte WHERE ans>=allow;")
 
     ipl.commit()
