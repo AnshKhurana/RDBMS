@@ -1,2 +1,2 @@
-# outlab10
-SQL outlab
+# RDBMS
+
